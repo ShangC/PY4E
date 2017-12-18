@@ -1,11 +1,23 @@
-#for week 6
-# x = 'from stephen.marquard@uct.ac.za'
-# pos = x.find('.')
-# print(x[pos:pos+3])
+import re
 
-# print(len('banana')*7)
+x = 'From 90:12:22 shang.chen@wlglobalcorp.com.cn Sat Jan 4 09:14:22 2015'
 
-# x = ord('^A')
-# print(x)
+y = re.findall('\S+@\S+', x)
+print(y)
 
-print(chr(001))
+z = re.findall('\S?@\S?', x)
+print(z)
+
+zz = re.findall('[a-z0-9]', x)
+print(zz)
+print(type(zz))
+
+zzz = re.findall('\S+?@\S+', x)
+print(zzz)
+
+zzzz = re.findall('@(\S+)', x)
+print(zzzz)
+
+a = 'From: Using the : Character'
+b = re.findall('^F.+:', a)
+print(b)

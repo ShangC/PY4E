@@ -1,21 +1,26 @@
 fhandle = open('mbox-short.txt')
 
-hour_histogram = {}
-tuple_list = []
-
-
+dic = dict()
+hourList = []
 for line in fhandle:
-    line = line.rstrip()
     if not line.startswith('From '):
         continue
-    time = line.split()[5]
-    hour = time.split(':')[0]
-    hour_histogram[hour] = hour_histogram.get(hour, 0) + 1
+    line = line.rstrip()
+    lineItem = line.split()
+    #print(lineItem)
+    lineTime = lineItem[5]
+    #print(lineTime)
+    timeItem = lineTime.split(':')
+    #print(timeItem)
+    hour = timeItem[0]
+    #print(hours)
+    dic[hour] = dic.get(hour,0)+1
 
-for key in hour_histogram:
-    tuple_list.append((key, hour_histogram[key])
+ 
+for hour, count in dic.items():
+    hourList.append((hour, count))
 
+hourList.sort()
 
-
-for item in list_sort:
-    print(item)
+for hour, count in hourList:
+    print(hour, count)
