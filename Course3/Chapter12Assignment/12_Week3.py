@@ -1,4 +1,5 @@
-#chapter 12 assignment
+# Chapter 12 assignment
+# This is for Week 3 
 
 import socket
 
