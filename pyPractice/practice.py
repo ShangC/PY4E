@@ -48,15 +48,16 @@ url = 'http://py4e-data.dr-chuck.net/comments_42.html'
 html = urllib.request.urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, 'html.parser')
 
-# # Retrieve all of the anchor tags
-# spans = soup('span')
-# numbers = []
-# for span in spans:
-#     numbers.append(int(span.string))
+# Retrieve all of the anchor tags
+spans = soup('span')
+numbers = []
+for span in spans:
+    numbers.append(int(span.string))
+# test output of span and span.string 
 #     print(span)
 #     print(span.string)
 # print(numbers)
-# print(sum(numbers))
+print(sum(numbers))
 
 # Chapter 12 Exercise
 # this is a test
