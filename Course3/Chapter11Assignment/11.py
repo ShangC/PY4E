@@ -9,7 +9,7 @@ total = 0
 for line in fhandle:
     line = line.rstrip()
     numberInLine = re.findall('[0-9]+', line)
-    #print(numberInLine)
+    print(numberInLine)
     for num in numberInLine:
         total += int(num)
 
