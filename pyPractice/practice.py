@@ -35,29 +35,29 @@
 # for line in fhand:
 #     print(line.decode().strip())
 
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-import ssl
+# import urllib.request, urllib.parse, urllib.error
+# from bs4 import BeautifulSoup
+# import ssl
 
-# Ignore SSL certificate errors
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+# # Ignore SSL certificate errors
+# ctx = ssl.create_default_context()
+# ctx.check_hostname = False
+# ctx.verify_mode = ssl.CERT_NONE
 
-url = 'http://py4e-data.dr-chuck.net/comments_42.html'
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
+# url = 'http://py4e-data.dr-chuck.net/comments_42.html'
+# html = urllib.request.urlopen(url, context=ctx).read()
+# soup = BeautifulSoup(html, 'html.parser')
 
-# Retrieve all of the anchor tags
-spans = soup('span')
-numbers = []
-for span in spans:
-    numbers.append(int(span.string))
-# test output of span and span.string 
-#     print(span)
-#     print(span.string)
-# print(numbers)
-print(sum(numbers))
+# # Retrieve all of the anchor tags
+# spans = soup('span')
+# numbers = []
+# for span in spans:
+#     numbers.append(int(span.string))
+# # test output of span and span.string 
+# #     print(span)
+# #     print(span.string)
+# # print(numbers)
+# print(sum(numbers))
 
 # Chapter 12 Exercise
 # this is a test
@@ -93,3 +93,18 @@ print(sum(numbers))
 #     numLst.append(x)
 # print(numLst)
 # print(sum(numLst))
+
+import re
+
+txt = "From: shang.chen@wlglobalcorp.com to abc@test.com"
+
+orgRaw = re.findall("From: \S+@(\S+)", txt)
+
+print("orgRaw",orgRaw)
+print(type(orgRaw))
+org = str(orgRaw)[2:(len(orgRaw)-3)]
+orgStrip = str(orgRaw).strip("'[]")
+print("orgStrip",orgStrip)
+print("str(orgRaw)",str(orgRaw))
+print("org",org)
+print(type(org))

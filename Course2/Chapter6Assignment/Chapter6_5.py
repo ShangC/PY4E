@@ -2,7 +2,8 @@ text = 'X-DSPAM-Confidence:    0.8475'
 pos = text.find('0')
 print(float(text[pos:]))
 
-# use a function to extract numbers in the string. However, since '.' throws the traceback, '0' is discarded and only return decimal numbers.
+# use a function to extract numbers in the string. However, since '.' throws the traceback, 
+# '0' is discarded and only return decimal numbers.
 # def function(string):
 #     final = ''
 #     for i in string:
