@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import sqlite3
+import os
 
 conn = sqlite3.connect("C15W3DB.sqlite")
 cur = conn.cursor()
@@ -37,13 +38,15 @@ cur.executescript(
     );
 ''')
 
-print("1 -- Inside VS Code")
+print("1 -- Windows VS Code")
 print("2 -- Local Terminal")
+
 RunEnvir = input("Choose Python execution environment:")
 if RunEnvir == "1":
-    XmlName = "c:/Users/AdminWLGlobal/Desktop/PY4E/Course4/Chapter15Assignment/library.xml"
+    XmlName = os.path.join(os.path.dirname(__file__), "library.xml")
 if RunEnvir == "2":
-    Xmlname = "Library.xml"
+    XmlName = "library.xml"
+
    
     
 def lookup(d, key):
@@ -83,38 +86,41 @@ for track in TrackData:
     
     print(name, artist, album, genre, count, rating, length)
        
-    if artist not in artistList:
-        cur.execute(
-            '''INSERT OR IGNORE INTO Artist (name)
-            VALUES (?)''', (artist,)
-        )
-        cur.execute(
-            '''SELECT id FROM Artist 
-            WHERE name = ?''', (artist,)
-        )
-        artist_id = cur.fetchone()[0]
+    # if artist in artistList:
+    #     continue
+    cur.execute(
+        '''INSERT OR IGNORE INTO Artist (name)
+        VALUES (?)''', (artist,)
+    )
+    cur.execute(
+        '''SELECT id FROM Artist 
+        WHERE name = ?''', (artist,)
+    )
+    artist_id = cur.fetchone()[0]
 
-    elif album not in albumList:
-        cur.execute(
-            '''INSERT OR IGNORE INTO Album (title, artist_id)
-            VALUES (?, ?)''', (album, artist_id)
-        )
-        cur.execute(
-            '''SELECT id FROM Album
-            WHERE title = ?''', (album,)
-        )
-        album_id = cur.fetchone()[0]
+    # if album in albumList:
+    #     continue
+    cur.execute(
+        '''INSERT OR IGNORE INTO Album (title, artist_id)
+        VALUES (?, ?)''', (album, artist_id)
+    )
+    cur.execute(
+        '''SELECT id FROM Album
+        WHERE title = ?''', (album,)
+    )
+    album_id = cur.fetchone()[0]
 
-    elif genre not in genreList:
-        cur.execute(
-            '''INSERT OR IGNORE INTO Genre (name)
-            VALUES (?)''', (genre,)
-        )
-        cur.execute(
-            '''SELECT id FROM Genre 
-            WHERE name = ?''', (genre,)
-        )
-        genre_id = cur.fetchone()[0]
+    # if genre in genreList:
+    #     continue
+    cur.execute(
+        '''INSERT OR IGNORE INTO Genre (name)
+        VALUES (?)''', (genre,)
+    )
+    cur.execute(
+        '''SELECT id FROM Genre 
+        WHERE name = ?''', (genre,)
+    )
+    genre_id = cur.fetchone()[0]
     # print(genre_id)
 
     cur.execute(

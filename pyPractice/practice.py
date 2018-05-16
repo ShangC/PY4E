@@ -94,17 +94,25 @@
 # print(numLst)
 # print(sum(numLst))
 
-import re
+# import re
 
-txt = "From: shang.chen@wlglobalcorp.com to abc@test.com"
+# txt = "From: shang.chen@wlglobalcorp.com to abc@test.com"
 
-orgRaw = re.findall("From: \S+@(\S+)", txt)
+# orgRaw = re.findall("From: \S+@(\S+)", txt)
 
-print("orgRaw",orgRaw)
-print(type(orgRaw))
-org = str(orgRaw)[2:(len(orgRaw)-3)]
-orgStrip = str(orgRaw).strip("'[]")
-print("orgStrip",orgStrip)
-print("str(orgRaw)",str(orgRaw))
-print("org",org)
-print(type(org))
+# print("orgRaw",orgRaw)
+# print(type(orgRaw))
+# org = str(orgRaw)[2:(len(orgRaw)-3)]
+# orgStrip = str(orgRaw).strip("'[]")
+# print("orgStrip",orgStrip)
+# print("str(orgRaw)",str(orgRaw))
+# print("org",org)
+# print(type(org))
+
+import os
+import xml.etree.ElementTree as ET
+
+# RunEnvir = input("Enter the number")
+# if RunEnvir == "1":
+RunPath = os.path.join(os.path.dirname(__file__), "library.xml")
+print("result:",RunPath)
