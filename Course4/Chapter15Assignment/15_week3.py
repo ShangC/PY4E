@@ -2,7 +2,9 @@ import xml.etree.ElementTree as ET
 import sqlite3
 import os
 
-conn = sqlite3.connect("C15W3DB.sqlite")
+CurrentPath = os.path.dirname(__file__)
+ConnPath = os.path.join(CurrentPath,"C15W3DB.sqlite")
+conn = sqlite3.connect(ConnPath)
 cur = conn.cursor()
 
 cur.executescript(
@@ -86,6 +88,23 @@ for track in TrackData:
     
     print(name, artist, album, genre, count, rating, length)
        
+    '''
+    Tried to use below comment code for skipping SQL command
+    if Artist, Album, and Genre has existed in the database.
+    The purpose is to make those tables' primary key in consistent order
+    In current result:   | What I want to achieve:
+    Table Genre:         | Table Genre:
+    "1"	    "Rock"       | "1"     "Rock"
+    "2"	    "Industrial" | "2"     "Industrial"
+    "3"	    "Soundtrack" | "3"     "Soundtrack"
+    "6"	    "Funk"       | "4"     "Funk"
+    "9"	    "Metal"      | "5"     "Metal"
+    ...                  | ...
+
+    However the if statement will skip the entire 
+    insert SQL command which results in empty entry
+    in the actual database.
+    '''
     # if artist in artistList:
     #     continue
     cur.execute(
