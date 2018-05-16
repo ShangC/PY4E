@@ -5,8 +5,11 @@
 
 import sqlite3
 import re
+import os
 
-conn = sqlite3.connect("orgdb.sqlite")
+CurrentPath = os.path.dirname(__file__)
+ConnPath = os.path.join(CurrentPath,"C15W2DB.sqlite")
+conn = sqlite3.connect(ConnPath)
 cur = conn.cursor()
 cur.execute(
     '''DROP TABLE IF EXISTS Counts
@@ -15,12 +18,16 @@ cur.execute(
     '''CREATE TABLE Counts (org TEXT, count, INTEGER)
     ''')
 
-print('''Use c:/Users/AdminWLGlobal/Desktop/PY4E/Course4/Chapter15Assignment/mbox.txt 
-to test the code in VS Code terminal''')
+print("1 -- Windows VS Code")
+print("2 -- Local Terminal")
 
-print("If running in system cmd, simply use mbox.txt")
+RunEnvir = input("Choose Python execution environment:")
+if RunEnvir == "1":
+    TxtName = os.path.join(os.path.dirname(__file__), "mbox.txt")
+if RunEnvir == "2":
+    TxtName = "mbox.txt"
 
-TxtName = input("Enter File Name:")
+
 TxtHandle = open(TxtName)
 print("\nPlease Wait, start Processing File",TxtName,"...\n")
 for line in TxtHandle:
