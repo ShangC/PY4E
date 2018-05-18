@@ -109,13 +109,19 @@
 # print("org",org)
 # print(type(org))
 
-import os
-import xml.etree.ElementTree as ET
-import sqlite3
+# import os
+# import xml.etree.ElementTree as ET
+# import sqlite3
 
-# RunPath = os.path.join(os.path.dirname(__file__), "library.xml")
-# print("result:",RunPath)
+# # RunPath = os.path.join(os.path.dirname(__file__), "library.xml")
+# # print("result:",RunPath)
 
-CurrentPath = os.path.dirname(__file__)
-ConnectionPath = os.path.join(CurrentPath,"testDB.sqlite")
-conn = sqlite3.connect(ConnectionPath)
+# CurrentPath = os.path.dirname(__file__)
+# ConnectionPath = os.path.join(CurrentPath,"testDB.sqlite")
+# conn = sqlite3.connect(ConnectionPath)
+
+print(ord("G"))
+
+lst = ["108","105","115","116"]
+for c in lst:
+    print(chr(int(c)))
